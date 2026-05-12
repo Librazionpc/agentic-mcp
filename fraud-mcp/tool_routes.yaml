@@ -1,0 +1,25 @@
+version: 1
+backend_prefix: FRAUD
+routes:
+  risk_score_calculate:
+    method: POST
+    path: /risk/score
+  behavior_analysis_query:
+    method: POST
+    path: /behavior/analyze
+  device_fingerprint_check:
+    method: GET
+    path: /device/fingerprint
+  transaction_flag:
+    method: POST
+    path: /transactions/{transaction_id}/flag
+  fraud_case_create:
+    method: POST
+    path: /cases
+  account_freeze:
+    method: POST
+    path: /customers/{customer_id}/freeze
+  account_security_actions:
+    method: POST
+    path: /customers/{customer_id}/security-actions
+

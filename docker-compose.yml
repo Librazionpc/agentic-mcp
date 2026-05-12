@@ -1,0 +1,90 @@
+services:
+  payments-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/payments-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8091:8091"
+
+  ticketing-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/ticketing-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8092:8092"
+
+  crm-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/crm-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8093:8093"
+
+  kyc-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/kyc-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8094:8094"
+
+  fraud-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/fraud-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8095:8095"
+
+  notification-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/notification-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8096:8096"
+
+  escalation-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/escalation-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8097:8097"
+
+  rag-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/rag-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8098:8098"
+    volumes:
+      - ../agentic-rag/.chroma:/data/chroma
+
+  onboarding-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/onboarding-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8099:8099"
+
+  collections-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/collections-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8100:8100"
+
+  compliance-mcp:
+    build:
+      context: ..
+      dockerfile: agentic-mcp/compliance-mcp/Dockerfile
+    env_file: .env
+    ports:
+      - "8101:8101"

@@ -1,0 +1,30 @@
+version: 1
+backend_prefix: KYC
+routes:
+  kyc_status_lookup:
+    method: GET
+    path: /customers/{customer_id}/kyc
+  kyc_resubmit_request:
+    method: POST
+    path: /customers/{customer_id}/kyc/resubmit
+  kyc_verification_status:
+    method: GET
+    path: /customers/{customer_id}/kyc
+  kyc_status_update:
+    method: POST
+    path: /customers/{customer_id}/kyc
+  document_verification:
+    method: POST
+    path: /verify/document
+  identity_lookup:
+    method: GET
+    path: /lookup/identity
+  face_match_check:
+    method: POST
+    path: /verify/face-match
+  liveness_detection:
+    method: POST
+    path: /verify/liveness
+  sanction_list_check:
+    method: GET
+    path: /lookup/sanctions

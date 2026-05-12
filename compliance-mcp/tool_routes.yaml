@@ -1,0 +1,22 @@
+version: 1
+backend_prefix: COMPLIANCE
+routes:
+  compliance_case_create:
+    method: POST
+    path: /cases
+  risk_assessment_check:
+    method: POST
+    path: /risk/assess
+  policy_validation:
+    method: POST
+    path: /policy/validate
+  user_risk_profile_update:
+    method: POST
+    path: /customers/{customer_id}/risk-profile
+  compliance_report_generate:
+    method: POST
+    path: /reports/generate
+  transaction_audit_log:
+    method: GET
+    path: /transactions/{transaction_id}/audit
+

@@ -1,0 +1,22 @@
+version: 1
+backend_prefix: LOANS
+routes:
+  debt_status_check:
+    method: GET
+    path: /customers/{customer_id}/debt
+  repayment_schedule_update:
+    method: POST
+    path: /customers/{customer_id}/repayment-schedule
+  repayment_templates:
+    method: GET
+    path: /templates/repayment
+  account_restriction_apply:
+    method: POST
+    path: /customers/{customer_id}/restrictions
+  restriction_lookup:
+    method: GET
+    path: /customers/{customer_id}/restrictions
+  risk_score_update:
+    method: POST
+    path: /customers/{customer_id}/risk-score
+

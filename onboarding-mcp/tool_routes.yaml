@@ -1,0 +1,22 @@
+version: 1
+backend_prefix: ONBOARDING
+routes:
+  account_status_lookup:
+    method: GET
+    path: /customers/{customer_id}/account-status
+  user_profile_create:
+    method: POST
+    path: /customers/{customer_id}/profile
+  onboarding_step_update:
+    method: POST
+    path: /customers/{customer_id}/onboarding/step
+  onboarding_resend_link:
+    method: POST
+    path: /customers/{customer_id}/onboarding/resend-link
+  activation_status_check:
+    method: GET
+    path: /customers/{customer_id}/activation
+  first_action_track:
+    method: POST
+    path: /customers/{customer_id}/first-action
+

@@ -1,0 +1,42 @@
+version: 1
+backend_prefix: TICKETING
+routes:
+  create_complaint_ticket:
+    method: POST
+    path: /complaints
+  append_complaint_note:
+    method: POST
+    path: /complaints/{complaint_id}/notes
+  request_refund_approval:
+    method: POST
+    path: /approvals/refunds
+  ticket_create:
+    method: POST
+    path: /tickets
+  ticket_comment:
+    method: POST
+    path: /tickets/{ticket_id}/comments
+  ticket_update:
+    method: POST
+    path: /tickets/{ticket_id}
+  ticket_status_check:
+    method: GET
+    path: /tickets/{ticket_id}
+  sla_timer_check:
+    method: GET
+    path: /tickets/{ticket_id}/sla
+  workflow_state_query:
+    method: GET
+    path: /workflows/state
+  ticket_assign:
+    method: POST
+    path: /tickets/{ticket_id}/assign
+  assign_support_queue:
+    method: POST
+    path: /tickets/{ticket_id}/assign
+  priority_ticket_update:
+    method: POST
+    path: /tickets/{ticket_id}/priority
+  similar_ticket_search:
+    method: GET
+    path: /tickets/search

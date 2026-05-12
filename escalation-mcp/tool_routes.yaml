@@ -1,0 +1,18 @@
+version: 1
+backend_prefix: ESCALATION
+routes:
+  ticket_escalate:
+    method: POST
+    path: /tickets/{ticket_id}/escalate
+  incident_status_lookup:
+    method: GET
+    path: /incidents/{incident_id}
+  create_human_ticket:
+    method: POST
+    path: /human-tickets
+  escalation_log_create:
+    method: POST
+    path: /logs
+  incident_report_generate:
+    method: POST
+    path: /incidents/report

@@ -1,0 +1,33 @@
+version: 1
+backend_prefix: CRM
+routes:
+  customer_history_fetch:
+    method: GET
+    path: /customers/{customer_id}/history
+  customer_profile_update:
+    method: POST
+    path: /customers/{customer_id}/profile
+  customer_tag_update:
+    method: POST
+    path: /customers/{customer_id}/tags
+  crm_update:
+    method: POST
+    path: /customers/{customer_id}/update
+  crm_upsert_note:
+    method: POST
+    path: /customers/{customer_id}/notes
+  crm_tag_customer:
+    method: POST
+    path: /customers/{customer_id}/tags
+  crm_note_write:
+    method: POST
+    path: /customers/{customer_id}/notes
+  crm_sync:
+    method: POST
+    path: /sync
+  interaction_log_write:
+    method: POST
+    path: /customers/{customer_id}/interactions
+  segmentation_update:
+    method: POST
+    path: /customers/{customer_id}/segment

@@ -1,0 +1,21 @@
+version: 1
+backend_prefix: NOTIFICATION
+routes:
+  notification_send:
+    method: POST
+    path: /send
+  send_message:
+    method: POST
+    path: /send-message
+  send_notification:
+    method: POST
+    path: /send
+  payment_reminder_send:
+    method: POST
+    path: /reminders/payments
+  reminder_schedule_create:
+    method: POST
+    path: /reminders/schedule
+  notify_team_slack:
+    method: POST
+    path: /notify/slack

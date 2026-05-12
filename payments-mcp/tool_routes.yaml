@@ -1,0 +1,54 @@
+version: 1
+backend_prefix: PAYMENTS
+
+# Tool -> backend route mapping.
+# You can override these defaults later by editing this file (or moving to config service).
+routes:
+  get_transaction_status:
+    method: GET
+    path: /transactions/{transaction_id}
+
+  transaction_lookup:
+    method: GET
+    path: /transactions/{transaction_id}
+
+  transaction_status_check:
+    method: GET
+    path: /transactions/{transaction_id}/status
+
+  transaction_trace:
+    method: GET
+    path: /transactions/{transaction_id}/trace
+
+  fetch_payment_trace:
+    method: GET
+    path: /transactions/{transaction_id}/trace
+
+  settlement_status_query:
+    method: GET
+    path: /transactions/{transaction_id}/settlement
+
+  bank_confirmation_check:
+    method: GET
+    path: /transactions/{transaction_id}/bank-confirmation
+
+  ledger_reconciliation_check:
+    method: GET
+    path: /transactions/{transaction_id}/reconcile
+
+  search_transactions:
+    method: GET
+    path: /customers/{customer_id}/transactions
+
+  payment_status_check:
+    method: GET
+    path: /transactions/{transaction_id}/status
+
+  ledger_trace:
+    method: GET
+    path: /transactions/{transaction_id}/ledger-trace
+
+  fee_breakdown:
+    method: GET
+    path: /transactions/{transaction_id}/fee-breakdown
+
