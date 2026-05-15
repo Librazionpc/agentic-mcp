@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -10,11 +11,22 @@ from .errors import ToolError
 
 
 def _workspace_root() -> Path:
-    # Docker build context is the monorepo root.
+    # Prefer explicit override, then common container path, then source-relative fallback.
+    env_root_raw = (os.environ.get("MCP_WORKSPACE_ROOT") or "").strip()
+    if env_root_raw:
+        env_root = Path(env_root_raw)
+        if env_root.exists():
+            return env_root
+    app_root = Path("/app")
+    if app_root.exists():
+        return app_root
     return Path(__file__).resolve().parents[2]
 
 
 def _contracts_root() -> Path:
+    env_contracts = (os.environ.get("MCP_CONTRACTS_ROOT") or "").strip()
+    if env_contracts:
+        return Path(env_contracts)
     return _workspace_root() / "agentic-skills" / "contracts"
 
 

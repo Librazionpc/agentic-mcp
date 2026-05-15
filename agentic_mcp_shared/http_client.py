@@ -21,6 +21,9 @@ def backend_config(prefix: str) -> BackendConfig:
     timeout = float(os.environ.get(f"{prefix}_TIMEOUT_SECONDS", "10"))
     if not base_url or not api_key:
         raise ToolError("UPSTREAM_UNAVAILABLE", f"{prefix} backend is not configured.")
+    # Linux Docker often lacks host.docker.internal DNS; use default bridge gateway fallback.
+    if "host.docker.internal" in base_url:
+        base_url = base_url.replace("host.docker.internal", "172.17.0.1")
     return BackendConfig(base_url=base_url.rstrip("/"), api_key=api_key, timeout_seconds=timeout)
 
 

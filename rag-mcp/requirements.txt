@@ -7,5 +7,7 @@ jsonschema==4.23.0
 PyYAML==6.0.2
 
 chromadb==0.5.5
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.4.1+cpu
 sentence-transformers==3.0.1
 

@@ -18,6 +18,9 @@ class RagConfig:
     collection: str
     embedding_model: str
     default_visibility: str
+    chroma_host: str
+    chroma_port: int
+    chroma_ssl: bool
 
 
 def _rag_config() -> RagConfig:
@@ -25,7 +28,18 @@ def _rag_config() -> RagConfig:
     collection = os.environ.get("RAG_CHROMA_COLLECTION", "agentic_rag").strip() or "agentic_rag"
     embedding_model = os.environ.get("RAG_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2").strip()
     default_visibility = os.environ.get("RAG_DEFAULT_VISIBILITY", "public").strip() or "public"
-    return RagConfig(persist_dir=persist_dir, collection=collection, embedding_model=embedding_model, default_visibility=default_visibility)
+    chroma_host = os.environ.get("RAG_CHROMA_HOST", "").strip()
+    chroma_port = int(os.environ.get("RAG_CHROMA_PORT", "8000"))
+    chroma_ssl = os.environ.get("RAG_CHROMA_SSL", "false").strip().lower() in {"1", "true", "yes"}
+    return RagConfig(
+        persist_dir=persist_dir,
+        collection=collection,
+        embedding_model=embedding_model,
+        default_visibility=default_visibility,
+        chroma_host=chroma_host,
+        chroma_port=chroma_port,
+        chroma_ssl=chroma_ssl,
+    )
 
 
 def _visibility_for_caller(caller: CallerContext) -> str:
@@ -52,7 +66,10 @@ def _where_clause(visibility: str, sources: list[str] | None) -> dict[str, Any] 
 
 
 def _collection(cfg: RagConfig):
-    client = chromadb.PersistentClient(path=cfg.persist_dir)
+    if cfg.chroma_host:
+        client = chromadb.HttpClient(host=cfg.chroma_host, port=cfg.chroma_port, ssl=cfg.chroma_ssl)
+    else:
+        client = chromadb.PersistentClient(path=cfg.persist_dir)
     ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name=cfg.embedding_model)
     return client.get_or_create_collection(name=cfg.collection, embedding_function=ef)
 
